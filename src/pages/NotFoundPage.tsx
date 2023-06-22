@@ -1,11 +1,11 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import { FC } from "react";
-// import "./styles/notFoundPage.scss";
+import "./styles/notFoundPage.scss";
 
 const NotFoundPage: React.FC = () => {
     return (
-        <div className="not-foud_page">
+        <div className="not-found_page">
             This page doesn&apos;t exist... Go&nbsp;
             <NavLink to="/">
                 <span> Home </span>

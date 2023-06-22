@@ -3,19 +3,14 @@ import { Routes, Route } from "react-router-dom";
 import "./App.css";
 import NotFoundPage from "./pages/NotFoundPage";
 import Home from "./pages/Home";
-import Layout from "./components/Layout";
-import Registration from "./pages/Registration";
-import Authorization from "./pages/Authorization";
+import SignIn from "./components/SignIn";
+import Auth from "./pages/Auth";
 function App() {
     return (
         <Routes>
-            <Route index element={<Home />} />
-
-            <Route path="/auth/register" element={<Registration />} />
-            <Route path="/auth/login" element={<Authorization />} />
-            <Route path="/" element={<Layout />}>
-                <Route path="/users" element={<Home />} />
-            </Route>
+            <Route index element={<Auth />} />
+            <Route path="/auth/login" element={<SignIn />} />
+            <Route path="/users" element={<Home />} />
             <Route path="*" element={<NotFoundPage />} />
         </Routes>
     );

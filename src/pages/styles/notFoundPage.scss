@@ -1,0 +1,20 @@
+$background-color: #1d283a;
+$text-color: rgb(235, 239, 240);
+$text-decoration-color: underline;
+$font-size: 35px;
+
+.not-found_page {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: $background-color;
+    color: $text-color;
+    height: 100vh;
+
+    span {
+        color: $text-color;
+        text-decoration: $text-decoration-color;
+    }
+
+    font-size: $font-size;
+}
