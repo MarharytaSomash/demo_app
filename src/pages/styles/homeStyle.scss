@@ -1,0 +1,78 @@
+$background-color: #1d283a;
+$font-family: "Montserrat";
+.home-page-wraper {
+    width: 100%;
+    height: 100vh;
+    background-color: $background-color;
+
+    .home-page-logo {
+        position: relative;
+        width: 8.4rem;
+        height: 5rem;
+        top: 3rem;
+        left: 150px;
+    }
+
+    .home-page-info {
+        .home-page-title {
+            position: relative;
+            font-family: $font-family;
+            font-size: 48px;
+            font-weight: 700;
+            line-height: 72px;
+            letter-spacing: 0em;
+            text-align: left;
+            color: white;
+            width: 508px;
+            height: 73px;
+            top: 175px;
+            left: 466px;
+        }
+        .home-page-decor {
+            position: absolute;
+            max-width: 237px;
+            max-height: 188px;
+            top: 9rem;
+            left: 60rem;
+            background-color: rgba(0, 0, 0, 0);
+            z-index: 1;
+        }
+    }
+    .home-page-text {
+        max-width: 466px;
+        max-height: 50px;
+        position: absolute;
+        top: 358px;
+        left: 487px;
+        font-family: $font-family;
+        font-weight: 600;
+        font-size: 1rem;
+        line-height: 25px;
+        color: white;
+    }
+
+    .home-page-button {
+        max-width: 100px;
+        max-height: 44px;
+        position: absolute;
+        top: 455px;
+        left: 671px;
+        background-color: #539713;
+        color: white;
+        font-weight: 600;
+        font-size: 1rem;
+        font-family: $font-family;
+        padding: 10px;
+        &:active {
+            background-color: #2f4e12;
+        }
+    }
+}
+
+.home-page-img {
+    position: absolute;
+    max-width: 341px;
+    max-height: 288px;
+    top: 35.7rem;
+    left: 39rem;
+}
