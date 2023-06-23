@@ -8,7 +8,7 @@ const Logo = () => {
                 width: "8.4rem",
                 height: "5rem",
                 top: "3rem",
-                left: "-3.8rem",
+                left: "-6.1rem",
             }}
             src={process.env.PUBLIC_URL + "/img/Logo.png"}
             alt="logo"

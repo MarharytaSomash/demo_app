@@ -2,22 +2,44 @@
     display: flex;
 }
 $font-family: "Montserrat";
-
-.registration__page-wrapper {
-    display: flex;
+.authorization-wrapper {
+    width: 100%;
+    @include flex;
+    justify-content: center;
+    align-items: center;
+}
+.authorization-wrapper_main {
+    width: 26.5rem;
+    height: 54.25rem;
+    @include flex;
+    flex-direction: column;
+    align-items: center;
+    background: #1d283a;
+    left: 3rem;
+}
+.authorization__form-wrapper {
+    @include flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
     height: 100vh;
+    width: 26.5rem;
+    margin-top: -11rem;
+    margin-left: 4px;
 }
-.registration__page {
+.authorization-form__flex {
+    @include flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.authorization__page {
     @include flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
 }
 
-.registration__form {
+.authorization__form {
     @include flex;
     flex-direction: column;
     justify-content: center;
@@ -25,11 +47,11 @@ $font-family: "Montserrat";
 
     .form__title {
         color: white;
-        width: 23rem;
+        width: 15.9rem;
         height: 5.25rem;
-        margin-top: 100px;
+        margin-top: 10px;
         position: relative;
-        left: --1rem;
+        left: -2.8rem;
         font-family: $font-family;
         font-size: 3.5rem;
         font-weight: 700;
@@ -39,18 +61,14 @@ $font-family: "Montserrat";
         margin-bottom: 20px;
     }
 
-    .registration-form__details {
+    .authorization-form__details {
         @include flex;
         flex-direction: column;
         margin-bottom: 20px;
         width: 100%;
     }
-    .registration-form__flex {
-        @include flex;
-        align-items: center;
-        justify-content: space-between;
-    }
-    .registration-form__label {
+
+    .authorization-form__label {
         margin-bottom: 10px;
         color: white;
         font-family: $font-family;
@@ -61,7 +79,7 @@ $font-family: "Montserrat";
         text-align: left;
     }
 
-    .registration-form__input {
+    .authorization-form__input {
         padding: 10px;
         color: rgba(199, 199, 199, 0.705);
         font-size: 1rem;
@@ -69,16 +87,16 @@ $font-family: "Montserrat";
         background-color: transparent !important;
         font-family: $font-family;
     }
-    .registration-form__input[type="text"],
-    .registration-form__input[type="password"] {
+    .authorization-form__input[type="text"],
+    .authorization-form__input[type="password"] {
         background-color: transparent !important;
     }
-    /* .registration-form__input:hover,
+    /* .authorization-form__input:hover,
     :focus {
         border: 1px solid rgb(1, 1, 11);
     } */
 
-    .registration-form__submit {
+    .authorization-form__submit {
         padding: 10px 20px;
         border-radius: 5px;
         border: none;
@@ -95,10 +113,10 @@ $font-family: "Montserrat";
     margin-top: 5px;
 }
 
-.additional-info {
-    width: 200px;
+.additional-info_button {
+    width: 300px;
     height: 19px;
-    margin-top: 50px;
+    margin-top: -90px;
     margin-left: 44px;
     font-weight: 400;
     font-size: 12px;
@@ -111,29 +129,29 @@ $font-family: "Montserrat";
 }
 
 /* @media (min-width: 768px) and (max-width: 1023px) {
-    .registration__form {
-        .registration-form__label {
+    .authorization__form {
+        .authorization-form__label {
             font-size: 20px;
         }
-        .registration-form__input {
+        .authorization-form__input {
             font-size: 18px;
         }
     }
 }
 
 @media (max-width: 767px) {
-    .registration__form {
+    .authorization__form {
         padding: 60px;
         .form__title {
             font-size: 35px;
         }
-        .registration-form__details {
+        .authorization-form__details {
             width: 115%;
         }
-        .registration-form__label {
+        .authorization-form__label {
             font-size: 20px;
         }
-        .registration-form__submit {
+        .authorization-form__submit {
             width: 60%;
         }
     }

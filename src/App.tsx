@@ -3,8 +3,9 @@ import { Routes, Route } from "react-router-dom";
 import "./App.css";
 import NotFoundPage from "./pages/NotFoundPage";
 import Home from "./pages/Home";
-import SignIn from "./components/SignIn";
+import { SignIn } from "./components/SignIn";
 import Auth from "./pages/Auth";
+
 function App() {
     return (
         <Routes>
