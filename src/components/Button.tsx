@@ -20,5 +20,9 @@ const CustomButton = styled(Button)({
 });
 
 export default function CustomizedButton() {
-    return <CustomButton variant="contained">Sign Up</CustomButton>;
+    return (
+        <CustomButton variant="contained" type="submit">
+            Sign Up
+        </CustomButton>
+    );
 }

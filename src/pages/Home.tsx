@@ -1,12 +1,12 @@
 import React from "react";
 import Logo from "../components/Logo";
-import { useNavigate } from "react-router-dom";
+import useLogOut from "../hooks/useLogOut";
 import "./styles/homeStyle.scss";
 
 const Home: React.FC = () => {
-    const navigate = useNavigate();
+    const { LogOutHandler } = useLogOut();
     const handleClick = () => {
-        navigate("/");
+        LogOutHandler();
     };
     return (
         <div className="home-page-wraper">
@@ -26,7 +26,7 @@ const Home: React.FC = () => {
                     Now you are on the main page. Soon we will provide you with detailed feedback on
                     the result of your work
                 </p>
-                <button className="home-page-button" onClick={handleClick}>
+                <button className="home-page-button" type="submit" onClick={handleClick}>
                     Log Out
                 </button>
                 <img

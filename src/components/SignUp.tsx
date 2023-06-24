@@ -1,26 +1,24 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { Divider, Typography } from "@material-ui/core";
+import { Divider } from "@material-ui/core";
 import { Formik, Form, Field } from "formik";
 import "./styles/sighUpStyle.scss";
 import IconEyeOff from "./Eye";
 import CustomizedButtons from "./Button";
 import { Link } from "react-router-dom";
 import { SignUpProps } from "../interface";
+import { inputDataReg } from "../interface";
+import { useState, useEffect } from "react";
 import { SignupSchemaRegister, inputRegigter } from "../constants/data";
-
+import { toast } from "react-toastify";
+import useRegister from "../hooks/useRegister";
 export const SignUp: React.FC<SignUpProps> = ({ handleToggleSignUp }) => {
-    //  const dispatch = useDispatch();
-    //  const { user } = useSelector((state: RootState) => state);
-
-    //  const { error } = useSelector((state: RootState) => state.error);
-
-    //  const { registrationHandler }: any = useRegister();
-    const handleSubmit = (values: any) => {
-        //   dispatch(registerUserAction(values));
-        //   registrationHandler(values);
-        console.log(values);
+    const [error, setError] = useState();
+    const { registrationHandler }: any = useRegister();
+    const handleSubmit = (values: inputDataReg) => {
+        registrationHandler(values);
     };
+
     const renderErrorMessage = (name: string, touched: any, errors: any) => {
         if (touched[name] && errors[name]) {
             return <div className="warning">{errors[name]}</div>;
@@ -28,19 +26,12 @@ export const SignUp: React.FC<SignUpProps> = ({ handleToggleSignUp }) => {
         return null;
     };
 
-    //  useEffect(() => {
-    //      if (error) {
-    //          toast.error(`${error}`, {
-    //              position: toast.POSITION.BOTTOM_CENTER,
-    //          });
-    //      }
-    //  }, [error]);
     return (
         <div className="registration__form-wrapper">
             <Formik
                 initialValues={{
-                    full_name: "",
-                    user_name: "",
+                    displayName: "",
+                    username: "",
                     password: "",
                     confirm_password: "",
                 }}
@@ -85,9 +76,9 @@ export const SignUp: React.FC<SignUpProps> = ({ handleToggleSignUp }) => {
                 )}
             </Formik>
             <p className="additional-info">
-                I have an account.{" "}
+                I have an account.
                 <span>
-                    <Link to="/auth/login">Go to Sign in</Link>
+                    <Link to="/">Go to Sign in</Link>
                 </span>
             </p>
         </div>

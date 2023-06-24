@@ -2,14 +2,14 @@ import * as yup from "yup";
 export const inputRegigter = [
     {
         label: "Full Name",
-        name: "full_name",
+        name: "displayName",
         autoComplete: "off",
         type: "text",
         placeholder: "Example name",
     },
     {
         label: "User Name",
-        name: "user_name",
+        name: "username",
         autoComplete: "off",
         type: "text",
         placeholder: "Example123",
@@ -19,7 +19,7 @@ export const inputRegigter = [
         name: "password",
         autoComplete: "off",
         type: "password",
-        placeholder: "enter your password",
+        placeholder: "please,enter your password more than 6 symbols",
     },
     {
         label: "Confirm Password",
@@ -32,7 +32,7 @@ export const inputRegigter = [
 export const inputLogin = [
     {
         label: "User Name",
-        name: "user_name",
+        name: "username",
         autoComplete: "off",
         type: "text",
         placeholder: "Example123",
@@ -47,38 +47,37 @@ export const inputLogin = [
 ];
 
 export const SignupSchemaLogin = yup.object().shape({
-    user_name: yup
+    username: yup
         .string()
-        .min(4, "Too Short, please,enter more than 4 symbols!")
+        .min(5, "Too Short, please,enter more than 5 symbols!")
         .max(15, "Too Long! please,enter less than 15 symbols!")
         .required("Required"),
 
     password: yup
         .string()
-        .min(6, "Too Short, please,enter more than 6 symbols!")
+        .min(8, "Too Short, please,enter more than 8 symbols!")
         .max(15, "Too Long! please,enter less  symbols!")
         .required("Required"),
 });
 export const SignupSchemaRegister = yup.object().shape({
-    full_name: yup
+    displayName: yup
         .string()
-        .min(4, "Too Short, please,enter more than 4 symbols!")
-        .max(15, "Too Long! please,enter less than 15 symbols!")
+        .min(6, "Too Short, please,enter more than 5 symbols!")
+        .max(25, "Too Long! please,enter less than 25 symbols!")
         .required("Required"),
-    user_name: yup
+    username: yup
         .string()
-        .min(4, "Too Short, please,enter more than 4 symbols!")
+        .min(6, "Too Short, please,enter more than 5 symbols!")
         .max(15, "Too Long! please,enter less than 15 symbols!")
         .required("Required"),
 
     password: yup
         .string()
-        .min(6, "Too Short, please,enter more than 6 symbols!")
+        .min(8, "Too Short, please,enter more than 8 symbols!")
         .max(15, "Too Long! please,enter less  symbols!")
         .required("Required"),
     confirm_password: yup
         .string()
-        .min(6, "Too Short, please,enter more than 6 symbols!")
-        .max(15, "Too Long! please,enter less  symbols!")
-        .required("Required"),
+        .oneOf([yup.ref("password"), undefined], "Passwords must match")
+        .required("Confirm Password is required"),
 });

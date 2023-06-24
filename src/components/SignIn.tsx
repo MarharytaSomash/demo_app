@@ -7,9 +7,9 @@ import IconEyeOff from "./Eye";
 import CustomizedButtons from "./Button";
 import { Link } from "react-router-dom";
 import Logo from "./Logo";
-import { Box } from "@material-ui/core";
-import { SignUpProps } from "../interface";
 import { SignupSchemaLogin, inputLogin } from "../constants/data";
+import useAuth from "../hooks/useAuth";
+import { setLocalStorage } from "../utilits/LocalStorage";
 
 export const SignIn: React.FC = () => {
     //  const dispatch = useDispatch();
@@ -17,11 +17,10 @@ export const SignIn: React.FC = () => {
 
     //  const { error } = useSelector((state: RootState) => state.error);
 
-    //  const { registrationHandler }: any = useRegister();
+    const { authHandler }: any = useAuth();
     const handleSubmit = (values: any) => {
         //   dispatch(registerUserAction(values));
-        //   registrationHandler(values);
-        console.log(values);
+        authHandler(values);
     };
     const renderErrorMessage = (name: string, touched: any, errors: any) => {
         if (touched[name] && errors[name]) {
@@ -39,12 +38,12 @@ export const SignIn: React.FC = () => {
     //  }, [error]);
     return (
         <div className="authorization-wrapper">
-            <div className="authorization-wrapper_main">
+            <div className="authorization-wrapper-main">
                 <Logo />
                 <div className="authorization__form-wrapper">
                     <Formik
                         initialValues={{
-                            user_name: "",
+                            username: "",
                             password: "",
                         }}
                         onSubmit={handleSubmit}
@@ -94,10 +93,10 @@ export const SignIn: React.FC = () => {
                         )}
                     </Formik>
                 </div>
-                <p className="additional-info_button">
+                <p className="additional-info-button">
                     Don’t have account yet?
                     <span>
-                        <Link to="/"> New Account</Link>
+                        <Link to="/auth/register"> New Account</Link>
                     </span>
                 </p>
             </div>

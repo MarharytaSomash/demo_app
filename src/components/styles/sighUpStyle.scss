@@ -109,7 +109,19 @@ $font-family: "Montserrat";
         color: #7faaf0;
     }
 }
-
+.toast-error {
+    background-color: red;
+    color: white;
+    font-weight: bold;
+    text-align: center;
+    padding: 10px;
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 5px;
+    z-index: 9999;
+}
 /* @media (min-width: 768px) and (max-width: 1023px) {
     .registration__form {
         .registration-form__label {
