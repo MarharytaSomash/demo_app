@@ -1,15 +1,9 @@
 import React from "react";
-import { useState } from "react";
-import { SignUp } from "../components/SignUp";
-import { SignIn } from "../components/SignIn";
 import { Box } from "@material-ui/core";
+import { SignUp } from "../components/SignUp";
 import Logo from "../components/Logo";
 
 const Auth = () => {
-    const [isSignUp, setIsSignUp] = useState(true);
-    const handleToggleSignUp = () => {
-        setIsSignUp(!isSignUp);
-    };
     return (
         <Box
             style={{
@@ -31,8 +25,7 @@ const Auth = () => {
                 }}
             >
                 <Logo />
-
-                {isSignUp ? <SignUp handleToggleSignUp={handleToggleSignUp} /> : <SignIn />}
+                <SignUp />
             </Box>
         </Box>
     );

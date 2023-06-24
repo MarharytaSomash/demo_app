@@ -1,6 +1,3 @@
-export interface SignUpProps {
-    handleToggleSignUp: () => void;
-}
 export interface inputDataReg {
     displayName: string;
     username: string;

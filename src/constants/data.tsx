@@ -47,37 +47,39 @@ export const inputLogin = [
 ];
 
 export const SignupSchemaLogin = yup.object().shape({
-    username: yup
-        .string()
-        .min(5, "Too Short, please,enter more than 5 symbols!")
-        .max(15, "Too Long! please,enter less than 15 symbols!")
-        .required("Required"),
-
-    password: yup
-        .string()
-        .min(8, "Too Short, please,enter more than 8 symbols!")
-        .max(15, "Too Long! please,enter less  symbols!")
-        .required("Required"),
+    username: yup.string().required("Required"),
+    password: yup.string().required("Required"),
 });
 export const SignupSchemaRegister = yup.object().shape({
     displayName: yup
         .string()
-        .min(6, "Too Short, please,enter more than 5 symbols!")
-        .max(25, "Too Long! please,enter less than 25 symbols!")
+        .min(6, "min 6 symbol")
+        .max(25, "Too Long! please,enter less than 20 symbols!")
         .required("Required"),
     username: yup
         .string()
-        .min(6, "Too Short, please,enter more than 5 symbols!")
+        .min(6, "min 6 symbols")
         .max(15, "Too Long! please,enter less than 15 symbols!")
+        .matches(/^(?=.*[a-zA-Z])(?=.*\d).*$/, "Username must contain both letters and numbers.")
         .required("Required"),
 
     password: yup
         .string()
-        .min(8, "Too Short, please,enter more than 8 symbols!")
         .max(15, "Too Long! please,enter less  symbols!")
+        .matches(
+            /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/,
+            "Password must contain at least 8 characters, one uppercase letter, one lowercase letter, one number, and one special character.",
+        )
         .required("Required"),
     confirm_password: yup
         .string()
         .oneOf([yup.ref("password"), undefined], "Passwords must match")
         .required("Confirm Password is required"),
 });
+export const keysToRemove = [
+    "accessToken",
+    "refreshToken",
+    "userAuth",
+    "userRegister",
+    "newAccessToken",
+];

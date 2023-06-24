@@ -9,8 +9,8 @@ import Auth from "./pages/Auth";
 function App() {
     return (
         <Routes>
-            <Route index element={<SignIn />} />
-            <Route path="/auth/register" element={<Auth />} />
+            <Route index element={<Auth />} />
+            <Route path="/auth/login" element={<SignIn />} />
             <Route path="/users" element={<Home />} />
             <Route path="*" element={<NotFoundPage />} />
         </Routes>

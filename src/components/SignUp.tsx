@@ -6,13 +6,13 @@ import "./styles/sighUpStyle.scss";
 import IconEyeOff from "./Eye";
 import CustomizedButtons from "./Button";
 import { Link } from "react-router-dom";
-import { SignUpProps } from "../interface";
+
 import { inputDataReg } from "../interface";
 import { useState, useEffect } from "react";
 import { SignupSchemaRegister, inputRegigter } from "../constants/data";
 import { toast } from "react-toastify";
 import useRegister from "../hooks/useRegister";
-export const SignUp: React.FC<SignUpProps> = ({ handleToggleSignUp }) => {
+export const SignUp: React.FC = () => {
     const [error, setError] = useState();
     const { registrationHandler }: any = useRegister();
     const handleSubmit = (values: inputDataReg) => {
@@ -78,7 +78,7 @@ export const SignUp: React.FC<SignUpProps> = ({ handleToggleSignUp }) => {
             <p className="additional-info">
                 I have an account.
                 <span>
-                    <Link to="/">Go to Sign in</Link>
+                    <Link to="/auth/login">Go to Sign in</Link>
                 </span>
             </p>
         </div>

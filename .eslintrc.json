@@ -16,11 +16,11 @@
     },
     "plugins": ["react", "@typescript-eslint"],
     "rules": {
-        "semi": true,
-        "tabWidth": 2,
-        "printWidth": 100,
-        "singleQuote": true,
-        "trailingComma": "none",
-        "jsxBracketSameLine": true
+        // "semi": 1,
+        // "tabWidth": 2,
+        // "printWidth": 100,
+        // "singleQuote": true,
+        // "trailingComma": "none",
+        // "jsxBracketSameLine": true
     }
 }

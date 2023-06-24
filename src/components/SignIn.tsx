@@ -9,7 +9,6 @@ import { Link } from "react-router-dom";
 import Logo from "./Logo";
 import { SignupSchemaLogin, inputLogin } from "../constants/data";
 import useAuth from "../hooks/useAuth";
-import { setLocalStorage } from "../utilits/LocalStorage";
 
 export const SignIn: React.FC = () => {
     //  const dispatch = useDispatch();
@@ -96,7 +95,7 @@ export const SignIn: React.FC = () => {
                 <p className="additional-info-button">
                     Don’t have account yet?
                     <span>
-                        <Link to="/auth/register"> New Account</Link>
+                        <Link to="/"> New Account</Link>
                     </span>
                 </p>
             </div>
