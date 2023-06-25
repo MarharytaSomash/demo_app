@@ -3,11 +3,17 @@ import { useNavigate } from "react-router-dom";
 import { setLocalStorage } from "../utilits/LocalStorage";
 import { useState } from "react";
 import axios from "axios";
+// import { Alert } from "@mui/material";
+// import { useAppDispatch } from "../store";
+import { setError } from "../store/errorReducer ";
+import { AppDispatch } from "../store";
 import { AUTH, REGISTER } from "../constants/path";
+import { useAppDispatch } from "../store";
+import { loginFailure, startLoading, loginSuccess } from "../store/registerReducer";
 
 const useRegister = () => {
-    const [error, setError] = useState();
     const navigate = useNavigate();
+    const dispatch: AppDispatch = useAppDispatch();
 
     const registrationHandler = async (values: inputDataReg) => {
         const headers = {
@@ -21,19 +27,22 @@ const useRegister = () => {
         };
 
         try {
+            dispatch(startLoading());
             const response = await axios.post(
                 `${process.env.REACT_APP_API_URL}${REGISTER}`,
                 dataToSend,
-                {
-                    headers,
-                },
+                { headers },
             );
+
             const user = response.data;
-            setLocalStorage("userRegister", JSON.stringify(user));
-            setTimeout(() => navigate(AUTH), 1000);
+            if (user) {
+                dispatch(loginSuccess(user));
+                setLocalStorage("userRegister", JSON.stringify(user));
+                setTimeout(() => navigate(AUTH), 1000);
+            }
         } catch (error: any) {
-            console.error(error.response.data.message);
-            setError(error.response.data.message);
+            dispatch(setError(error.response.data.message));
+            dispatch(loginFailure());
         }
     };
     return { registrationHandler };

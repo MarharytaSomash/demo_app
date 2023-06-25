@@ -6,15 +6,18 @@ import "./styles/sighUpStyle.scss";
 import IconEyeOff from "./Eye";
 import CustomizedButtons from "./Button";
 import { Link } from "react-router-dom";
-
+import { Alert } from "@mui/material";
+import { useSelector } from "react-redux";
 import { inputDataReg } from "../interface";
-import { useState, useEffect } from "react";
 import { SignupSchemaRegister, inputRegigter } from "../constants/data";
-import { toast } from "react-toastify";
 import useRegister from "../hooks/useRegister";
+import { RootState } from "../store";
+import ErrorAlert from "../utilits/showAlert";
+
 export const SignUp: React.FC = () => {
-    const [error, setError] = useState();
     const { registrationHandler }: any = useRegister();
+    const error = useSelector((state: RootState) => state.error.errorMessage);
+
     const handleSubmit = (values: inputDataReg) => {
         registrationHandler(values);
     };
@@ -26,8 +29,16 @@ export const SignUp: React.FC = () => {
         return null;
     };
 
+    ErrorAlert();
+
     return (
         <div className="registration__form-wrapper">
+            {error && (
+                <Alert variant="filled" severity="error" className="alert">
+                    {error}
+                </Alert>
+            )}
+
             <Formik
                 initialValues={{
                     displayName: "",

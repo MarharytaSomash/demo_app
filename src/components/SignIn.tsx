@@ -6,19 +6,20 @@ import "./styles/sighInStyle.scss";
 import IconEyeOff from "./Eye";
 import CustomizedButtons from "./Button";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 import Logo from "./Logo";
 import { SignupSchemaLogin, inputLogin } from "../constants/data";
 import useAuth from "../hooks/useAuth";
+import { RootState } from "../store";
+import ErrorAlert from "../utilits/showAlert";
+import { Alert } from "@mui/material";
 
 export const SignIn: React.FC = () => {
-    //  const dispatch = useDispatch();
-    //  const { user } = useSelector((state: RootState) => state);
-
-    //  const { error } = useSelector((state: RootState) => state.error);
+    const error = useSelector((state: RootState) => state.error.errorMessage);
+    const userAuth = useSelector((state: RootState) => state.auth.userData);
 
     const { authHandler }: any = useAuth();
     const handleSubmit = (values: any) => {
-        //   dispatch(registerUserAction(values));
         authHandler(values);
     };
     const renderErrorMessage = (name: string, touched: any, errors: any) => {
@@ -27,19 +28,17 @@ export const SignIn: React.FC = () => {
         }
         return null;
     };
-
-    //  useEffect(() => {
-    //      if (error) {
-    //          toast.error(`${error}`, {
-    //              position: toast.POSITION.BOTTOM_CENTER,
-    //          });
-    //      }
-    //  }, [error]);
+    ErrorAlert();
     return (
         <div className="authorization-wrapper">
             <div className="authorization-wrapper-main">
                 <Logo />
                 <div className="authorization__form-wrapper">
+                    {error && (
+                        <Alert variant="filled" severity="error" className="alert">
+                            {error}
+                        </Alert>
+                    )}
                     <Formik
                         initialValues={{
                             username: "",

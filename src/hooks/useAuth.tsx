@@ -3,10 +3,14 @@ import { useNavigate } from "react-router-dom";
 import { setLocalStorage } from "../utilits/LocalStorage";
 import { useState } from "react";
 import axios from "axios";
+import { useAppDispatch } from "../store";
+import { AppDispatch } from "../store";
+import { setError } from "../store/errorReducer ";
 import { REFRESH, AUTH, USERS } from "../constants/path";
+import { startLoading, loginSuccess, loginFailure } from "../store/authReducer";
 
 const useAuth = () => {
-    const [error, setError] = useState();
+    const dispatch: AppDispatch = useAppDispatch();
     const navigate = useNavigate();
 
     const authHandler = async (values: inputDataAuth) => {
@@ -27,7 +31,7 @@ const useAuth = () => {
                     headers,
                 },
             );
-
+            dispatch(startLoading());
             const { accessToken, refreshToken } = response.data;
 
             if (accessToken && refreshToken) {
@@ -60,13 +64,13 @@ const useAuth = () => {
 
                     setLocalStorage("newAccessToken", newAccessToken);
                     setLocalStorage("userAuth", JSON.stringify(usersData));
-
+                    dispatch(loginSuccess(usersData));
                     setTimeout(() => navigate(USERS), 800);
                 }
             }
         } catch (error: any) {
-            console.error(error.response.data.message);
-            setError(error.response.data.message);
+            dispatch(loginFailure());
+            dispatch(setError(error.response.data.message));
         }
     };
 
