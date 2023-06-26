@@ -1,6 +1,7 @@
 $background-color: #1d283a;
 $font-family: "Montserrat";
 .home-page-wraper {
+    position: fixed;
     width: 100%;
     height: 100vh;
     background-color: $background-color;
@@ -17,23 +18,23 @@ $font-family: "Montserrat";
         .home-page-title {
             position: relative;
             font-family: $font-family;
-            font-size: 48px;
+            font-size: 3rem;
             font-weight: 700;
-            line-height: 72px;
+            line-height: 4.5rem;
             letter-spacing: 0em;
             text-align: left;
             color: white;
-            width: 508px;
-            height: 73px;
-            top: 175px;
-            left: 466px;
+            width: 31.8rem;
+            height: 5rem;
+            top: 11rem;
+            left: 29rem;
         }
         .home-page-decor {
             position: absolute;
             max-width: 237px;
             max-height: 188px;
             top: 9rem;
-            left: 60rem;
+            left: 52rem;
             background-color: rgba(0, 0, 0, 0);
             z-index: 1;
         }
@@ -75,4 +76,133 @@ $font-family: "Montserrat";
     max-height: 288px;
     top: 35.7rem;
     left: 39rem;
+}
+@media (min-width: 768px) and (max-width: 1023px) {
+    .home-page-wraper {
+        width: 100%;
+        height: 100vh;
+        background-color: $background-color;
+
+        .home-page-logo {
+            position: relative;
+            width: 8.4rem;
+            height: 5rem;
+            top: 3rem;
+            left: 150px;
+        }
+
+        .home-page-info {
+            .home-page-title {
+                position: relative;
+                font-family: $font-family;
+                font-size: 3rem;
+                font-weight: 700;
+                line-height: 4.5rem;
+                letter-spacing: 0em;
+                text-align: center;
+                color: white;
+                width: 31.8rem;
+                height: 5rem;
+                top: 11rem;
+                left: 0;
+                margin: 0 auto;
+            }
+            .home-page-decor {
+                /* position: relative; */
+                max-width: 237px;
+                max-height: 188px;
+                top: 9rem;
+                left: 33rem;
+                background-color: rgba(0, 0, 0, 0);
+                z-index: 1;
+                transition: left 0.5s ease-in-out, top 0.5s ease-in-out;
+            }
+        }
+        .home-page-text {
+            max-width: 466px;
+            max-height: 50px;
+            position: absolute;
+            top: 358px;
+            left: 167px;
+            font-family: $font-family;
+            font-weight: 600;
+            font-size: 1rem;
+            line-height: 25px;
+            color: white;
+        }
+
+        .home-page-button {
+            max-width: 100px;
+            max-height: 44px;
+            position: absolute;
+            top: 455px;
+            left: 371px;
+            background-color: #539713;
+            color: white;
+            font-weight: 600;
+            font-size: 1rem;
+            font-family: $font-family;
+            padding: 10px;
+            &:active {
+                background-color: #2f4e12;
+            }
+        }
+    }
+
+    .home-page-img {
+        position: absolute;
+        max-width: 341px;
+        max-height: 288px;
+        top: 35.7rem;
+        left: 16rem;
+    }
+}
+@media (max-width: 320px) {
+    .home-page-wraper {
+        .home-page-logo {
+            position: relative;
+            width: 8.4rem;
+            height: 5rem;
+            top: 3rem;
+            left: 150px;
+        }
+
+        .home-page-info {
+            .home-page-title {
+                font-size: 2rem;
+                font-weight: 600;
+                width: 28rem;
+                height: 5rem;
+                top: 10rem;
+                left: 1rem;
+                margin: 0 auto;
+            }
+            .home-page-decor {
+                position: relative;
+                max-width: 200px;
+                max-height: 188px;
+                top: -0.5rem;
+                left: 13rem;
+                transition: left 0.5s ease-in-out, top 0.5s ease-in-out;
+            }
+        }
+        .home-page-text {
+            max-width: 260px;
+            top: 280px;
+            left: 45px;
+        }
+
+        .home-page-button {
+            top: 400px;
+            left: 126px;
+        }
+    }
+
+    .home-page-img {
+        position: absolute;
+        max-width: 341px;
+        max-height: 288px;
+        top: 32rem;
+        left: 0.5rem;
+    }
 }

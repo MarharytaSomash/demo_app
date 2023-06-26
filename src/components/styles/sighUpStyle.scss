@@ -107,37 +107,7 @@ $font-family: "Montserrat";
         color: #7faaf0;
     }
 }
-
-// @media (min-width: 768px) and (max-width: 1023px) {
-//     .additional-info {
-//         width: 200px;
-//         height: 19px;
-//         margin-top: 50px;
-//         margin-left: 44px;
-//         font-weight: 400;
-//         font-size: 12px;
-//         color: #f1f2f1;
-//         font-family: $font-family;
-
-//         span {
-//             color: #7faaf0;
-//         }
-//     }
-// }
-// @media (max-width: 767px) {
-//     .registration__form {
-//         padding: 60px;
-//         .form__title {
-//             font-size: 35px;
-//         }
-//         .registration-form__details {
-//             width: 115%;
-//         }
-//         .registration-form__label {
-//             font-size: 20px;
-//         }
-//         .registration-form__submit {
-//             width: 60%;
-//         }
-//     }
-// }
+.additional-info-button {
+    margin-top: -10rem;
+    font-size: 13px;
+}

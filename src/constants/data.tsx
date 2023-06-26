@@ -19,7 +19,7 @@ export const inputRegigter = [
         name: "password",
         autoComplete: "off",
         type: "password",
-        placeholder: "please,enter your password more than 6 symbols",
+        placeholder: "Password must contain at least 8 characters",
     },
     {
         label: "Confirm Password",
