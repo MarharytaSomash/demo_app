@@ -16,11 +16,9 @@
     },
     "plugins": ["react", "@typescript-eslint"],
     "rules": {
-        // "semi": 1,
-        // "tabWidth": 2,
-        // "printWidth": 100,
-        // "singleQuote": true,
-        // "trailingComma": "none",
-        // "jsxBracketSameLine": true
+        "react/jsx-uses-react": "off",
+        "semi": 1,
+        "trailingComma": 0,
+        "jsxBracketSameLine": 0
     }
 }

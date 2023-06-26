@@ -1,9 +1,7 @@
 import React from "react";
-import ReactDOM from "react-dom";
-import { Divider } from "@material-ui/core";
+import { Alert } from "antd";
 import { Formik, Form, Field } from "formik";
-import "./styles/sighInStyle.scss";
-import IconEyeOff from "./Eye";
+import IconEyeOff from "./EyeIconCompnent";
 import CustomizedButtons from "./Button";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
@@ -12,33 +10,25 @@ import { SignupSchemaLogin, inputLogin } from "../constants/data";
 import useAuth from "../hooks/useAuth";
 import { RootState } from "../store";
 import ErrorAlert from "../utilits/showAlert";
-import { Alert } from "@mui/material";
+import { IinputDataAuth } from "../interface";
+import { showWarningMessage } from "../utilits/showWarning";
+import CustomDivider from "./CustomDiveder";
+import "./styles/sighInStyle.scss";
 
 export const SignIn: React.FC = () => {
     const error = useSelector((state: RootState) => state.error.errorMessage);
-    const userAuth = useSelector((state: RootState) => state.auth.userData);
-
-    const { authHandler }: any = useAuth();
-    const handleSubmit = (values: any) => {
+    const { authHandler }: { authHandler: (data: IinputDataAuth) => void } = useAuth();
+    const handleSubmit = (values: IinputDataAuth) => {
         authHandler(values);
     };
-    const renderErrorMessage = (name: string, touched: any, errors: any) => {
-        if (touched[name] && errors[name]) {
-            return <div className="warning">{errors[name]}</div>;
-        }
-        return null;
-    };
+
     ErrorAlert();
     return (
         <div className="authorization-wrapper">
             <div className="authorization-wrapper-main">
                 <Logo />
                 <div className="authorization__form-wrapper">
-                    {error && (
-                        <Alert variant="filled" severity="error" className="alert">
-                            {error}
-                        </Alert>
-                    )}
+                    {error && <Alert message={error} className="alert" type="error" showIcon />}
                     <Formik
                         initialValues={{
                             username: "",
@@ -74,13 +64,8 @@ export const SignIn: React.FC = () => {
                                                         <IconEyeOff style={{ color: "white" }} />
                                                     )}
                                                 </div>
-                                                <Divider
-                                                    style={{
-                                                        backgroundColor: "white",
-                                                        width: "19.7",
-                                                    }}
-                                                />
-                                                {renderErrorMessage(name, touched, errors)}
+                                                <CustomDivider />
+                                                {showWarningMessage(name, touched, errors)}
                                             </div>
                                         );
                                     },

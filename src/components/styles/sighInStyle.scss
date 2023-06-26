@@ -7,6 +7,7 @@ $font-family: "Montserrat";
     @include flex;
     justify-content: center;
     align-items: center;
+    min-height: 100vh;
 }
 .authorization-wrapper-main {
     width: 26.5rem;
@@ -16,6 +17,7 @@ $font-family: "Montserrat";
     align-items: center;
     background: #1d283a;
     left: 3rem;
+    min-height: 100vh;
 }
 .authorization__form-wrapper {
     @include flex;
@@ -25,7 +27,7 @@ $font-family: "Montserrat";
     height: 100vh;
     width: 26.5rem;
     margin-top: -11rem;
-    margin-left: 4px;
+    margin-left: 0.25rem;
 }
 .authorization-form__flex {
     @include flex;
@@ -64,8 +66,8 @@ $font-family: "Montserrat";
     .authorization-form__details {
         @include flex;
         flex-direction: column;
-        margin-bottom: 20px;
-        width: 100%;
+        /* margin-bottom: 20px;
+        width: 100%; */
     }
 
     .authorization-form__label {
@@ -91,10 +93,6 @@ $font-family: "Montserrat";
     .authorization-form__input[type="password"] {
         background-color: transparent !important;
     }
-    /* .authorization-form__input:hover,
-    :focus {
-        border: 1px solid rgb(1, 1, 11);
-    } */
 
     .authorization-form__submit {
         padding: 10px 20px;
@@ -114,45 +112,94 @@ $font-family: "Montserrat";
 }
 
 .additional-info-button {
-    width: 300px;
-    height: 19px;
-    margin-top: -17rem;
-    margin-left: 44px;
+    position: relative;
+    margin-top: -14rem;
+    margin-left: -1rem;
     font-weight: 400;
     font-size: 12px;
     color: #f1f2f1;
     font-family: $font-family;
+    display: flex;
+    align-items: center;
 
     span {
         color: #7faaf0;
     }
 }
 
-/* @media (min-width: 768px) and (max-width: 1023px) {
+@media (min-width: 768px) and (max-width: 1023px) {
+    .authorization-wrapper {
+        width: 100%;
+        @include flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+    }
+    .authorization__form-wrapper {
+        margin-top: -5rem;
+        margin-left: 4px;
+    }
+
     .authorization__form {
         .authorization-form__label {
-            font-size: 20px;
+            margin-bottom: 10px;
+            font-size: 1.1rem;
         }
+
         .authorization-form__input {
-            font-size: 18px;
+            padding: 12px;
+            font-size: 1.3rem;
         }
+
+        .authorization-form__submit {
+            font-size: 22px;
+        }
+    }
+    .warning {
+        color: red;
+        font-size: 12px;
+        margin-top: 5px;
+    }
+
+    .additional-info-button {
+        margin-top: -4rem;
+        font-size: 13px;
     }
 }
 
-@media (max-width: 767px) {
+@media (min-width: 320px) {
+    .authorization__form-wrapper {
+        margin-top: -6rem;
+        margin-left: 15px;
+    }
+
     .authorization__form {
-        padding: 60px;
         .form__title {
-            font-size: 35px;
+            font-size: 3rem;
         }
-        .authorization-form__details {
-            width: 115%;
-        }
+
         .authorization-form__label {
-            font-size: 20px;
+            margin-bottom: 10px;
+            font-size: 1.1rem;
         }
+
+        .authorization-form__input {
+            padding: 12px;
+            font-size: 1.3rem;
+        }
+
         .authorization-form__submit {
-            width: 60%;
+            font-size: 22px;
         }
     }
-} */
+    .warning {
+        color: red;
+        font-size: 12px;
+        margin-top: 5px;
+    }
+
+    .additional-info-button {
+        margin-top: -8rem;
+        font-size: 13px;
+    }
+}

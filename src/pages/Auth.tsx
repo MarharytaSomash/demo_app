@@ -1,11 +1,11 @@
 import React from "react";
-import { Box } from "@material-ui/core";
 import { SignUp } from "../components/SignUp";
 import Logo from "../components/Logo";
+import { Space } from "antd";
 
 const Auth = () => {
     return (
-        <Box
+        <Space
             style={{
                 width: "100%",
                 display: "flex",
@@ -13,7 +13,7 @@ const Auth = () => {
                 alignItems: "center",
             }}
         >
-            <Box
+            <Space
                 style={{
                     width: "26.5rem",
                     height: "54.25rem",
@@ -26,8 +26,8 @@ const Auth = () => {
             >
                 <Logo />
                 <SignUp />
-            </Box>
-        </Box>
+            </Space>
+        </Space>
     );
 };
 export default Auth;

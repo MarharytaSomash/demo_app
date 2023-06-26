@@ -11,14 +11,14 @@ import { logOutSuccess } from "../store/logOutReducer";
 const useLogOut = () => {
     const navigate = useNavigate();
     const dispatch: AppDispatch = useAppDispatch();
-
     const LogOutHandler = async () => {
         try {
-            const refreshToken = getLocalStorage("newAccessToken");
+            const token = getLocalStorage("newAccessToken");
             const headers = {
                 "Content-Type": "application/json",
-                Authorization: `Bearer ${refreshToken}`,
+                Authorization: `Bearer ${token}`,
             };
+            console.log("refresh", `${token}`);
             const response = await axios.get(`${process.env.REACT_APP_API_URL}/auth/logout`, {
                 headers,
             });

@@ -1,43 +1,31 @@
 import React from "react";
-import ReactDOM from "react-dom";
-import { Divider } from "@material-ui/core";
 import { Formik, Form, Field } from "formik";
-import "./styles/sighUpStyle.scss";
-import IconEyeOff from "./Eye";
+import { Alert } from "antd";
+import IconEyeOff from "./EyeIconCompnent";
 import CustomizedButtons from "./Button";
 import { Link } from "react-router-dom";
-import { Alert } from "@mui/material";
 import { useSelector } from "react-redux";
-import { inputDataReg } from "../interface";
+import { IinputDataReg } from "../interface";
 import { SignupSchemaRegister, inputRegigter } from "../constants/data";
 import useRegister from "../hooks/useRegister";
 import { RootState } from "../store";
+import { showWarningMessage } from "../utilits/showWarning";
 import ErrorAlert from "../utilits/showAlert";
+import CustomDivider from "./CustomDiveder";
+import "./styles/sighUpStyle.scss";
 
 export const SignUp: React.FC = () => {
-    const { registrationHandler }: any = useRegister();
+    const { registrationHandler } = useRegister();
     const error = useSelector((state: RootState) => state.error.errorMessage);
-
-    const handleSubmit = (values: inputDataReg) => {
+    const handleSubmit = (values: IinputDataReg) => {
         registrationHandler(values);
-    };
-
-    const renderErrorMessage = (name: string, touched: any, errors: any) => {
-        if (touched[name] && errors[name]) {
-            return <div className="warning">{errors[name]}</div>;
-        }
-        return null;
     };
 
     ErrorAlert();
 
     return (
         <div className="registration__form-wrapper">
-            {error && (
-                <Alert variant="filled" severity="error" className="alert">
-                    {error}
-                </Alert>
-            )}
+            {error && <Alert message={error} className="alert" type="error" showIcon />}
 
             <Formik
                 initialValues={{
@@ -71,13 +59,8 @@ export const SignUp: React.FC = () => {
                                             <IconEyeOff style={{ color: "white" }} />
                                         )}
                                     </div>
-                                    <Divider
-                                        style={{
-                                            backgroundColor: "white",
-                                            width: "19.7",
-                                        }}
-                                    />
-                                    {renderErrorMessage(name, touched, errors)}
+                                    <CustomDivider />
+                                    {showWarningMessage(name, touched, errors)}
                                 </div>
                             );
                         })}
@@ -89,7 +72,7 @@ export const SignUp: React.FC = () => {
             <p className="additional-info">
                 I have an account.
                 <span>
-                    <Link to="/auth/login">Go to Sign in</Link>
+                    <Link to="/auth/login"> Go to Sign in</Link>
                 </span>
             </p>
         </div>
