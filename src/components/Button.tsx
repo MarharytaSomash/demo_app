@@ -1,7 +1,6 @@
 import * as React from "react";
 import { styled } from "@mui/material/styles";
-import Button, { ButtonProps } from "@mui/material/Button";
-import { purple } from "@mui/material/colors";
+import Button from "@mui/material/Button";
 
 const CustomButton = styled(Button)({
     width: "300px",

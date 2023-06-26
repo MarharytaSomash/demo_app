@@ -1,4 +1,4 @@
-import { inputDataAuth } from "../interface";
+import { IinputDataAuth } from "../interface";
 import { useNavigate } from "react-router-dom";
 import { setLocalStorage } from "../utilits/LocalStorage";
 import { useState } from "react";
@@ -13,7 +13,7 @@ const useAuth = () => {
     const dispatch: AppDispatch = useAppDispatch();
     const navigate = useNavigate();
 
-    const authHandler = async (values: inputDataAuth) => {
+    const authHandler = async (values: IinputDataAuth) => {
         const headers = {
             "Content-Type": "application/json",
         };
@@ -65,12 +65,12 @@ const useAuth = () => {
                     setLocalStorage("newAccessToken", newAccessToken);
                     setLocalStorage("userAuth", JSON.stringify(usersData));
                     dispatch(loginSuccess(usersData));
-                    setTimeout(() => navigate(USERS), 800);
+                    navigate(USERS);
                 }
             }
         } catch (error: any) {
             dispatch(loginFailure());
-            dispatch(setError(error.response.data.message));
+            dispatch(setError(error.response.data?.message));
         }
     };
 

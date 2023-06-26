@@ -1,5 +1,4 @@
 import React from "react";
-import ReactDOM from "react-dom";
 import { Divider } from "@material-ui/core";
 import { Formik, Form, Field } from "formik";
 import "./styles/sighInStyle.scss";
@@ -12,22 +11,18 @@ import { SignupSchemaLogin, inputLogin } from "../constants/data";
 import useAuth from "../hooks/useAuth";
 import { RootState } from "../store";
 import ErrorAlert from "../utilits/showAlert";
+import { IinputDataAuth } from "../interface";
+import { showWarningMessage } from "../utilits/showWarning";
 import { Alert } from "@mui/material";
 
 export const SignIn: React.FC = () => {
     const error = useSelector((state: RootState) => state.error.errorMessage);
-    const userAuth = useSelector((state: RootState) => state.auth.userData);
 
-    const { authHandler }: any = useAuth();
-    const handleSubmit = (values: any) => {
+    const { authHandler }: { authHandler: (data: IinputDataAuth) => void } = useAuth();
+    const handleSubmit = (values: IinputDataAuth) => {
         authHandler(values);
     };
-    const renderErrorMessage = (name: string, touched: any, errors: any) => {
-        if (touched[name] && errors[name]) {
-            return <div className="warning">{errors[name]}</div>;
-        }
-        return null;
-    };
+
     ErrorAlert();
     return (
         <div className="authorization-wrapper">
@@ -80,7 +75,7 @@ export const SignIn: React.FC = () => {
                                                         width: "19.7",
                                                     }}
                                                 />
-                                                {renderErrorMessage(name, touched, errors)}
+                                                {showWarningMessage(name, touched, errors)}
                                             </div>
                                         );
                                     },

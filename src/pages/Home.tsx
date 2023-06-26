@@ -1,12 +1,16 @@
 import React from "react";
 import Logo from "../components/Logo";
 import useLogOut from "../hooks/useLogOut";
+import { useNavigate } from "react-router-dom";
+import { HOME } from "../constants/path";
 import "./styles/homeStyle.scss";
 
 const Home: React.FC = () => {
     const { LogOutHandler } = useLogOut();
+    const navigate = useNavigate();
     const handleClick = () => {
         LogOutHandler();
+        navigate(HOME);
     };
     return (
         <div className="home-page-wraper">

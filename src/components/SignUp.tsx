@@ -1,5 +1,4 @@
 import React from "react";
-import ReactDOM from "react-dom";
 import { Divider } from "@material-ui/core";
 import { Formik, Form, Field } from "formik";
 import "./styles/sighUpStyle.scss";
@@ -8,25 +7,19 @@ import CustomizedButtons from "./Button";
 import { Link } from "react-router-dom";
 import { Alert } from "@mui/material";
 import { useSelector } from "react-redux";
-import { inputDataReg } from "../interface";
+import { IinputDataReg } from "../interface";
 import { SignupSchemaRegister, inputRegigter } from "../constants/data";
 import useRegister from "../hooks/useRegister";
 import { RootState } from "../store";
+import { showWarningMessage } from "../utilits/showWarning";
 import ErrorAlert from "../utilits/showAlert";
 
 export const SignUp: React.FC = () => {
-    const { registrationHandler }: any = useRegister();
+    const { registrationHandler } = useRegister();
     const error = useSelector((state: RootState) => state.error.errorMessage);
 
-    const handleSubmit = (values: inputDataReg) => {
+    const handleSubmit = (values: IinputDataReg) => {
         registrationHandler(values);
-    };
-
-    const renderErrorMessage = (name: string, touched: any, errors: any) => {
-        if (touched[name] && errors[name]) {
-            return <div className="warning">{errors[name]}</div>;
-        }
-        return null;
     };
 
     ErrorAlert();
@@ -77,7 +70,7 @@ export const SignUp: React.FC = () => {
                                             width: "19.7",
                                         }}
                                     />
-                                    {renderErrorMessage(name, touched, errors)}
+                                    {showWarningMessage(name, touched, errors)}
                                 </div>
                             );
                         })}
